@@ -1,13 +1,11 @@
 package com.example.emloyeesproject.model;
 
-import jdk.nashorn.internal.ir.WhileNode;
-
 import javax.servlet.http.HttpServletRequest;
 import java.security.PrivateKey;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class EmployeeManagement {
+public class EmployeeManagement implements IEmployeeManagement {
     private ArrayList<Employee> employees;
     int index;
     public EmployeeManagement(){
@@ -41,6 +39,7 @@ public class EmployeeManagement {
             if(e.getId()==id){
                 e.setName(name);
                 break;
+
             }
         }
     }

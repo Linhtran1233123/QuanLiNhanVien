@@ -1,6 +1,7 @@
 package com.example.emloyeesproject.cotroller;
 
 import com.example.emloyeesproject.model.EmployeeManagement;
+import com.example.emloyeesproject.model.IEmployeeManagement;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,28 +12,28 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 
 public class PageController {
-    private EmployeeManagement employeeManagement;
+    private IEmployeeManagement iEmployeeManagement;
     public PageController(){
-        employeeManagement=new EmployeeManagement();
+        iEmployeeManagement = new EmployeeManagement();
     }
     @GetMapping
     public String display(Model model){
-        model.addAttribute("employees",employeeManagement.display());
+        model.addAttribute("employees",iEmployeeManagement.display());
         return "/list";
     }
     @PostMapping("/create")
       public String create(HttpServletRequest request,Model model) {
-        employeeManagement.create(request);
+        iEmployeeManagement.create(request);
         return display(model);
     }
     @PostMapping("/delete")
     public String delete(HttpServletRequest request,Model model){
-        employeeManagement.delete(request);
+        iEmployeeManagement.delete(request);
         return display(model);
     }
     @PostMapping("/update")
     public String update(HttpServletRequest request,Model model){
-        employeeManagement.update(request);
+        iEmployeeManagement.update(request);
         return display(model);
     }
 }
